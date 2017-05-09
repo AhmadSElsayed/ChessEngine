@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<grammar
+  version="1.0"
+  xml:lang="en-US"
+  root="ChessName"
+  xmlns="http://www.w3.org/2001/06/grammar"
+  tag-format="semantics/1.0">
+
+  <rule id="root">
+    <item>
+      <ruleref uri="#ChessName"/>
+      <tag>out.Base=rules.latest();</tag>
+    </item>
+  </rule>
+
+  <rule id="ChessName">
+    <item>
+       <item> ChessMaster </item>
+      <item>
+        <ruleref uri="#PieceType" />
+        <tag> out.PieceType = rules.latest(); </tag>
+      </item>
+        <item>
+          <ruleref uri="#Column" />
+          <tag> out.SourceColumn = rules.latest(); </tag>
+        </item>
+        <item>
+          <ruleref uri="#Row" />
+          <tag> out.SourceRow = rules.latest(); </tag>
+        </item>
+      <item> To </item>
+      <item>
+          <ruleref uri="#Column" />
+          <tag> out.DistinationColumn = rules.latest(); </tag>
+        </item>
+        <item>
+          <ruleref uri="#Row" />
+          <tag> out.DistinationRow = rules.latest(); </tag>
+        </item>
+    </item>
+  </rule>
+
+  <rule id="PieceType">
+    <one-of>
+      <item>
+        Knight <tag> out="Knight"; </tag>
+      </item>
+      <item>
+        Rook <tag> out="Rook"; </tag>
+      </item>
+	   <item>
+        Queen <tag> out="Queen"; </tag>
+      </item>
+	   <item>
+        King <tag> out="King"; </tag>
+      </item>
+	   <item>
+        Pawn <tag> out="Pawn"; </tag>
+      </item>
+	   <item>
+        Bishop <tag> out="Bishop"; </tag>
+      </item>	  
+    </one-of>
+  </rule>
+
+  <rule id="Row">
+    <one-of>
+      <item>
+        One <tag> out="1"; </tag>
+      </item>
+      <item>
+        Two <tag> out="2"; </tag>
+      </item>
+	  <item>
+        Three <tag> out="3"; </tag>
+      </item>
+	  <item>
+        Four <tag> out="4"; </tag>
+      </item>
+	  <item>
+        Five <tag> out="5"; </tag>
+      </item>
+	  <item>
+        Six <tag> out="6"; </tag>
+      </item>
+	  <item>
+        Seven <tag> out="7"; </tag>
+      </item>
+	  <item>
+        Eight <tag> out="8"; </tag>
+      </item>
+    </one-of>
+  </rule>
+
+  <rule id="Column">
+    <one-of>
+      <item>
+        A <tag> out="A"; </tag>
+      </item>
+      <item>
+        B <tag> out="B"; </tag>
+      </item>
+	    <item>
+        C <tag> out="C"; </tag>
+      </item>
+	    <item>
+        D <tag> out="D"; </tag>
+      </item>
+	    <item>
+        E <tag> out="E"; </tag>
+      </item>
+	    <item>
+        F <tag> out="F"; </tag>
+      </item>
+	    <item>
+        G <tag> out="G"; </tag>
+      </item>
+	    <item>
+        H <tag> out="H"; </tag>
+      </item>
+    </one-of>
+  </rule>
+
+</grammar>
